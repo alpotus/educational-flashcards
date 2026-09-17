@@ -1,1 +1,80 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashGram - Educational Flashcards</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        /* Smooth card flip styling */
+        .perspective { perspective: 1000px; }
+        .transform-style { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center pb-12">
+
+    <!-- Top Navigation Bar -->
+    <header class="w-full bg-white shadow-sm py-4 px-6 flex justify-between items-center sticky top-0 z-50">
+        <h1 class="text-xl font-bold text-indigo-600">FlashGram 🧠</h1>
+        <a href="/admin/index.html" class="text-xs bg-gray-200 text-gray-700 px-3 py-1.5 rounded-full font-medium">Admin Login</a>
+    </header>
+
+    <!-- Main Feed Container -->
+    <main class="w-full max-w-md mt-4 space-y-6 px-2" id="feed-container">
+        <!-- Sample Flashcard Post (Instagram Style) -->
+        <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+            <!-- Post Header -->
+            <div class="p-3 flex items-center justify-between border-b border-gray-100">
+                <span class="font-semibold text-sm text-gray-800">JavaScript Basics</span>
+                <span class="text-xs text-gray-400">1 of 3</span>
+            </div>
+
+            <!-- Flashcard Carousel Area (Sideways Scroll) -->
+            <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none p-4 space-x-4 bg-gray-50">
+                
+                <!-- Flashcard 1 -->
+                <div class="min-w-[100%] snap-center flex justify-center items-center h-72">
+                    <div class="w-full h-full bg-indigo-500 rounded-2xl shadow-md p-6 flex flex-col justify-between text-white cursor-pointer perspective" onclick="this.querySelector('.card-inner').classList.toggle('rotate-y-180')">
+                        <div class="relative w-full h-full transform-style duration-500 card-inner">
+                            <!-- Front Side -->
+                            <div class="absolute inset-0 backface-hidden flex flex-col justify-between p-2">
+                                <span class="text-xs uppercase tracking-widest text-indigo-200 font-bold">Front (Tap to Flip)</span>
+                                <p class="text-lg font-medium text-center">What is JavaScript?</p>
+                                <span class="text-xs text-center text-indigo-200">Double tap / Click to see answer</span>
+                            </div>
+                            <!-- Back Side -->
+                            <div class="absolute inset-0 backface-hidden rotate-y-180 bg-indigo-700 rounded-2xl flex flex-col justify-between p-2">
+                                <span class="text-xs uppercase tracking-widest text-indigo-200 font-bold">Back (Answer)</span>
+                                <p class="text-base text-center">A programming language used to make web pages interactive.</p>
+                                <span class="text-xs text-center text-indigo-200">Tap to flip back</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Post Actions (Like & Comments) -->
+            <div class="px-4 py-3 border-t border-gray-100 flex items-center space-x-4 text-gray-700">
+                <button class="flex items-center space-x-1 text-sm font-medium hover:text-red-500 transition">
+                    ❤️ <span>14 Likes</span>
+                </button>
+                <button class="flex items-center space-x-1 text-sm font-medium hover:text-indigo-500 transition">
+                    💬 <span>3 Comments</span>
+                </button>
+            </div>
+
+            <!-- Comments Section Preview -->
+            <div class="px-4 pb-4 text-xs text-gray-600 space-y-1">
+                <p><strong class="text-gray-800">Learner99:</strong> This helped a lot!</p>
+                <p><strong class="text-gray-800">CodeNinja:</strong> Clear and concise.</p>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
