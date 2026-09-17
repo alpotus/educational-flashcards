@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashGram - Admin Dashboard</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center pb-12">
+
+    <!-- Top Navigation Bar -->
+    <header class="w-full bg-white shadow-sm py-4 px-6 flex justify-between items-center sticky top-0 z-50">
+        <h1 class="text-xl font-bold text-indigo-600">Admin Panel 🛠️</h1>
+        <a href="/public/index.html" class="text-xs bg-indigo-50 text-indigo-600 px-3 py-1.5 rounded-full font-medium">View Public Feed</a>
+    </header>
+
+    <!-- Main Form Container -->
+    <main class="w-full max-w-md mt-6 px-4">
+        <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6 space-y-4">
+            <h2 class="text-lg font-bold text-gray-800">Create New Flashcard Set</h2>
+            
+            <!-- Set Title Input -->
+            <div>
+                <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Set Title (e.g., Python Basics)</label>
+                <input type="text" id="setTitle" placeholder="Enter topic name..." class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+
+            <!-- Flashcard 1: Front -->
+            <div>
+                <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Card 1 Front (Question)</label>
+                <textarea id="card1Front" rows="2" placeholder="What is...?" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+            </div>
+
+            <!-- Flashcard 1: Back -->
+            <div>
+                <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Card 1 Back (Answer)</label>
+                <textarea id="card1Back" rows="2" placeholder="The answer is..." class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button onclick="publishSet()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg text-sm transition">
+                Publish Flashcard Set 🚀
+            </button>
+        </div>
+    </main>
+
+    <script>
+        function publishSet() {
+            const title = document.getElementById('setTitle').value;
+            const f1 = document.getElementById('card1Front').value;
+            const b1 = document.getElementById('card1Back').value;
+
+            if(!title || !f1 || !b1) {
+                alert("Please fill out all fields!");
+                return;
+            }
+
+            alert("Flashcard set '" + title + "' saved successfully! (Back-end connection coming next).");
+        }
+    </script>
+
+</body>
+</html>
